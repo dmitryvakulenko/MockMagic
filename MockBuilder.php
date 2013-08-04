@@ -1,5 +1,5 @@
 <?php
-namespace MockLibrary;
+namespace MockMagic;
 
 use InvalidArgumentException;
 use PHPUnit_Framework_Constraint as Constraint;

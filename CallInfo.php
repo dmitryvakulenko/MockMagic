@@ -1,6 +1,6 @@
 <?php
 
-namespace MockLibrary;
+namespace MockMagic;
 
 
 class CallInfo {

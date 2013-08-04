@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: n0dwis
- * Date: 8/2/13
- * Time: 8:36 AM
- * To change this template use File | Settings | File Templates.
- */
-
-namespace MockLibrary;
+namespace MockMagic;
 
 
 class MagicWand {
