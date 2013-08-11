@@ -3,7 +3,7 @@ namespace MockMagic;
 
 use InvalidArgumentException;
 use PHPUnit_Framework_Constraint as Constraint;
-use PHPUnit_Framework_MockObject_Matcher_InvokedRecorder as InvokedRecorder;
+use PHPUnit_Framework_MockObject_Matcher_Invocation as Invokation;
 use PHPUnit_Framework_MockObject_Stub as Stub;
 
 class MockBuilder {
@@ -62,10 +62,8 @@ class MockBuilder {
             if (isset($this->_methods[$methodName])) {
                 $this->_setUpMethodMock($mock, $methodName);
             } else {
-                $methodFullName = $this->_class . '::' . $methodName;
-                $mock->expects($this->_test->any())
-                    ->method($methodName)
-                    ->will($this->_test->returnCallback(function() use ($methodFullName) { throw new \RuntimeException("Method $methodFullName wasn't be mocked!"); } ));
+                $mock->expects($this->_test->never())
+                    ->method($methodName);
             }
         }
         return $mock;
@@ -133,10 +131,10 @@ class MockBuilder {
     }
 
     private function _ensureMatcherIsInvokeCounter($matcher = null) {
-       if ($matcher instanceof InvokedRecorder) {
+       if ($matcher instanceof Invokation) {
             return $matcher;
         } elseif (is_null($matcher)) {
-            return $this->_test->any();
+            return $this->_test->atLeastOnce();
         } else {
            throw new InvalidArgumentException('Matcher should be instance of PHPUnit_Framework_MockObject_Matcher_InvokedRecorder or null.');
        }
