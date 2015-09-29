@@ -2,6 +2,9 @@
     "name": "dmitryvakulenko/mock-magic",
     "description": "A small wrapper for phpunit mock library",
     "type": "library",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
     "require": {
         "php": ">=5.3",
         "phpunit/phpunit": ">=4.0.0"
