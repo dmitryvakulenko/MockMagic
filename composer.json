@@ -1,0 +1,15 @@
+{
+    "name": "dmitryvakulenko/mock-magic",
+    "description": "A small wrapper for phpunit mock library",
+    "type": "library",
+    "require": {
+        "phpunit/phpunit-mock-objects": "4.0.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Vakulenko",
+            "email": "n0dwis@gmail.com"
+        }
+    ]
+}
