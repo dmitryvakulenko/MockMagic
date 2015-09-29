@@ -3,7 +3,7 @@
     "description": "A small wrapper for phpunit mock library",
     "type": "library",
     "require": {
-        "php": ">=5.3"
+        "php": ">=5.3",
         "phpunit/phpunit-mock-objects": ">=4.0.0"
     },
     "license": "MIT",
