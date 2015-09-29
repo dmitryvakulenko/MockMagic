@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "php": ">=5.3",
-        "phpunit/phpunit-mock-objects": ">=2.3.7"
+        "phpunit/phpunit": ">=4.0.0"
     },
     "license": "MIT",
     "authors": [
