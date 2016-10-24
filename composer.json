@@ -3,7 +3,7 @@
     "description": "A small wrapper for phpunit mock library",
     "type": "library",
     "autoload": {
-        "psr-4": { "MockMagic": "src/" }
+        "psr-4": { "MockMagic\\": "src/" }
     },
     "require": {
         "php": ">=5.3",
