@@ -24,7 +24,7 @@ class MockBuilder {
 
 
     /**
-     * @param null $info этот аргумент nullable просто чтобы не подчеркивала idea (не всегда помогает :)
+     * @param null $info СЌС‚РѕС‚ Р°СЂРіСѓРјРµРЅС‚ nullable РїСЂРѕСЃС‚Рѕ С‡С‚РѕР±С‹ РЅРµ РїРѕРґС‡РµСЂРєРёРІР°Р»Р° idea (РЅРµ РІСЃРµРіРґР° РїРѕРјРѕРіР°РµС‚ :)
      * @param null $result
      * @param null $matcher
      * @return $this
