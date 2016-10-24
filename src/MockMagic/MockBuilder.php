@@ -17,11 +17,14 @@ class MockBuilder {
 
     private $_methods = array();
 
-    function __construct(\PHPUnit_Framework_TestCase $test, $class) {
+    public function create(\PHPUnit_Framework_TestCase $test, $class) {
+        return new self($test, $class);
+    }
+
+    private function __construct(\PHPUnit_Framework_TestCase $test, $class) {
         $this->_test = $test;
         $this->_class = $class;
     }
-
 
     /**
      * @param null $info этот аргумент nullable просто чтобы не подчеркивала idea (не всегда помогает :)
