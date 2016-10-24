@@ -17,7 +17,7 @@ class MockBuilder {
 
     private $_methods = array();
 
-    public function create(\PHPUnit_Framework_TestCase $test, $class) {
+    public static function create(\PHPUnit_Framework_TestCase $test, $class) {
         return new self($test, $class);
     }
 
