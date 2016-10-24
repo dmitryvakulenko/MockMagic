@@ -1,9 +1,9 @@
 {
-    "name": "dmitryvakulenko/mock-magic",
+    "name": "dmitryvakulenko/mockmagic",
     "description": "A small wrapper for phpunit mock library",
     "type": "library",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-4": { "MockMagic": "src/" }
     },
     "require": {
         "php": ">=5.3",
