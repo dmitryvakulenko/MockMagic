@@ -38,13 +38,18 @@ class MockBuilder {
             throw new InvalidArgumentException("First argument of method 'on' should be a CallInfo type. " . get_class($info) . " instead.");
         }
         $name = $info->methodName;
-        $this->_methods[$name] = array();
-
-        if (isset($result)) {
-            $this->_methods[$name]['returns'] = $this->_ensureReturnIsStub($result);
+        if (!isset($this->_methods[$name])) {
+            $this->_methods[$name] = array();
         }
-        $this->_methods[$name]['matcher'] = $this->_ensureMatcherIsInvokeCounter($matcher);
-        $this->_methods[$name]['arguments'] = $this->_ensureArgumentsIsConstraint($info->arguments);
+
+        $newCall = array();
+        if (isset($result)) {
+            $newCall['returns'] = $this->_ensureReturnIsStub($result);
+        }
+        $newCall['matcher'] = $this->_ensureMatcherIsInvokeCounter($matcher);
+        $newCall['arguments'] = $this->_ensureArgumentsIsConstraint($info->arguments);
+
+        $this->_methods[$name][] = $newCall;
 
         return $this;
     }
@@ -97,16 +102,17 @@ class MockBuilder {
     }
 
     private function _setUpMethodMock($mock, $methodName) {
-        $methodData = $this->_methods[$methodName];
-        $invMocker = $mock->expects($methodData['matcher'])
-            ->method($methodName);
+        foreach ($this->_methods[$methodName] as $methodData) {
+            $invMocker = $mock->expects($methodData['matcher'])
+                ->method($methodName);
 
-        if (isset($methodData['returns'])) {
-            $invMocker->will($methodData['returns']);
-        }
+            if (isset($methodData['returns'])) {
+                $invMocker->will($methodData['returns']);
+            }
 
-        if (!empty($methodData['arguments'])) {
-            call_user_func_array(array($invMocker, 'with'), $methodData['arguments']);
+            if (!empty($methodData['arguments'])) {
+                call_user_func_array(array($invMocker, 'with'), $methodData['arguments']);
+            }
         }
     }
 
