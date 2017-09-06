@@ -2,8 +2,9 @@
 namespace MockMagic;
 
 use InvalidArgumentException;
-use PHPUnit_Framework_Constraint as Constraint;
-use PHPUnit_Framework_MockObject_Matcher_Invocation as Invokation;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Constraint\Constraint;
+use PHPUnit_Framework_MockObject_Matcher_Invocation as Invocation;
 use PHPUnit_Framework_MockObject_Stub as Stub;
 
 class MockBuilder {
@@ -17,11 +18,11 @@ class MockBuilder {
 
     private $_methods = array();
 
-    public static function create(\PHPUnit_Framework_TestCase $test, $class) {
+    public static function create(TestCase $test, $class) {
         return new self($test, $class);
     }
 
-    private function __construct(\PHPUnit_Framework_TestCase $test, $class) {
+    private function __construct(TestCase $test, $class) {
         $this->_test = $test;
         $this->_class = $class;
     }
@@ -140,7 +141,7 @@ class MockBuilder {
     }
 
     private function _ensureMatcherIsInvokeCounter($matcher = null) {
-       if ($matcher instanceof Invokation) {
+       if ($matcher instanceof Invocation) {
             return $matcher;
         } elseif (is_null($matcher)) {
             return $this->_test->atLeastOnce();
